@@ -1,17 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connectToMetaMask } from '../utils/connectWallet';
 
-function Navbar() {
+// Nhận walletAddress từ App.js truyền xuống
+function Navbar({ walletAddress, setWalletAddress }) {
+  
+  const handleConnect = async () => {
+    const address = await connectToMetaMask();
+    if (address) {
+      setWalletAddress(address); 
+    }
+  };
+
+  const formatAddress = (address) => {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  };
+
   return (
     <nav className="navbar">
-      <div className="logo">🎟️ NFT Ticket</div>
+      <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+        🎟️ NFT Ticket
+      </Link>
       
       <ul className="nav-links">
-        <li><a href="#home">Trang chủ</a></li>
-        <li><a href="#mytickets">Vé của tôi</a></li>
-        <li><a href="#create">Tạo sự kiện</a></li>
+        <li><Link to="/">Trang chủ</Link></li>
+        <li><Link to="/mytickets">Vé của tôi</Link></li>
+        <li><Link to="/create">Tạo sự kiện</Link></li>
       </ul>
 
-      <button className="wallet-btn">Connect Wallet</button>
+      {walletAddress ? (
+        <button className="wallet-btn" style={{ background: '#10B981', boxShadow: 'none' }}>
+          {formatAddress(walletAddress)}
+        </button>
+      ) : (
+        <button className="wallet-btn" onClick={handleConnect}>
+          Connect Wallet
+        </button>
+      )}
     </nav>
   );
 }

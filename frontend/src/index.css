@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +7,13 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #0B0B14;
+  /* Nền tối phong cách Web3 */
+  color: #FFFFFF;
 }
 
-/* Bố cục trang chính */
+/* Khung bọc toàn trang */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -19,65 +22,210 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 40px;
-  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  /* Giới hạn chiều rộng để không bị tràn 2 bên */
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* Navbar */
+/* --- Tiêu đề trang --- */
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #A855F7, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  color: #9CA3AF;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+/* --- Navbar & Footer --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
-  background-color: #1a1a2e;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px 40px;
+  background-color: rgba(11, 11, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #27272A;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  color: #fff;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 32px;
 }
 
 .nav-links a {
-  color: #e0e0e0;
+  color: #D1D5DB;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #A855F7;
 }
 
 .wallet-btn {
-  background-color: #e94560;
+  background: linear-gradient(90deg, #A855F7, #EC4899);
   color: #fff;
   border: none;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wallet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #27272A;
+  color: #6B7280;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+/* --- Grid & Ticket Card --- */
+.ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* Chia cột tự động cực chuẩn */
+  gap: 30px;
+}
+
+.ticket-card {
+  background-color: #11111E;
+  border: 1px solid #27272A;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-card:hover {
+  transform: translateY(-8px);
+  border-color: #A855F7;
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+}
+
+.ticket-image-wrapper {
+  position: relative;
+  height: 200px;
+}
+
+.ticket-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nft-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.ticket-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+.ticket-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  min-height: 56px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ticket-info {
+  font-size: 14px;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ticket-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #27272A;
+}
+
+.ticket-price-label {
+  font-size: 12px;
+  color: #9CA3AF;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ticket-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #10B981;
+}
+
+.buy-btn {
+  background-color: #27272A;
+  color: #fff;
+  border: 1px solid #3F3F46;
   padding: 10px 20px;
   border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Footer */
-.footer {
-  background-color: #0f0f1b;
-  color: #a0a0a0;
-  text-align: center;
-  padding: 24px 20px;
-  border-top: 1px solid #2a2a40;
-}
-
-.footer-text {
-  margin-bottom: 8px;
   font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.footer-sub {
-  font-size: 12px;
-  color: #6c757d;
+.buy-btn:hover {
+  background-color: #fff;
+  color: #000;
 }
